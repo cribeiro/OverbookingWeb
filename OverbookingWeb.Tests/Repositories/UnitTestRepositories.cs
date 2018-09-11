@@ -67,5 +67,28 @@ namespace OverbookingWeb.Tests.Repositories
 
             Assert.AreEqual(repository.getCount("parameter"), 1);
         }
+
+        [TestMethod]
+        public void TestSavePassenger()
+        {
+            InMemoryRepository repository = new InMemoryRepository();
+
+            FlightModel flight = new FlightModel();
+            flight.FromTo = "GRU-JFK";
+            flight.DateTime = DateTime.Parse("2018-01-01 23:59");
+            flight.Company = "American Airlines";
+            repository.Save(flight);
+
+            Assert.AreEqual(repository.getNumberOfPassengers(1), 0);
+
+            PassengerModel passenger = new PassengerModel();
+            passenger.PassengerFullName = "Jhon Doe";
+            passenger.PassengerAge = 32;
+            passenger.FlightId = 1;
+            repository.Save(passenger);
+
+            Assert.AreEqual(repository.getNumberOfPassengers(1), 1);
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using OverbookingWeb.Models;
 
 namespace OverbookingApp.Models
 {
@@ -24,5 +25,7 @@ namespace OverbookingApp.Models
         [Required]
         [DisplayName("Company")]
         public string Company { get; set; }
+
+        public List<PassengerModel> passengers = new List<PassengerModel>();
     }
 }

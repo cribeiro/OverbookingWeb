@@ -16,7 +16,7 @@ namespace OverbookingWeb
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Flight", action = "Create", id = UrlParameter.Optional }
+                defaults: new { controller = "Flight", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

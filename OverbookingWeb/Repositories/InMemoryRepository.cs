@@ -46,6 +46,14 @@ public class InMemoryRepository
             HttpContext.Current.Session["parameters"] = parameters;
 
         }
+        else if (obj is PassengerModel)
+        {
+            PassengerModel newPassenger = (PassengerModel)obj;
+
+            flights[newPassenger.FlightId - 1].passengers.Add(newPassenger);
+
+            HttpContext.Current.Session["flights"] = flights;
+        }
 
 
         return 1;
@@ -72,6 +80,11 @@ public class InMemoryRepository
     public List<FlightModel> GetAllFlights()
     {
         return flights;
+    }
+
+    public int getNumberOfPassengers(int flightId)
+    {
+        return flights[flightId - 1].passengers.Count;
     }
 
 }
