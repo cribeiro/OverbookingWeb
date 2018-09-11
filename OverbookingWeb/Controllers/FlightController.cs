@@ -12,6 +12,12 @@ namespace OverbookingApp.Controllers
 
         private InMemoryRepository repository = new InMemoryRepository();
 
+        // GET: Flight
+        public ActionResult Index()
+        {
+            return View(repository.GetAllFlights());
+        }
+
         // GET: Flight/Create
         [HttpGet]
         public ActionResult Create()

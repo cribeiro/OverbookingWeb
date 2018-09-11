@@ -48,4 +48,9 @@ public class InMemoryRepository
         
     }
 
+    public List<FlightModel> GetAllFlights()
+    {
+        return flights;
+    }
+
 }
