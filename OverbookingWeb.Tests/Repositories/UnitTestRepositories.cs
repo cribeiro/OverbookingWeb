@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OverbookingApp.Models;
+using OverbookingWeb.Models;
 
 namespace OverbookingWeb.Tests.Repositories
 {
@@ -50,6 +51,21 @@ namespace OverbookingWeb.Tests.Repositories
             Assert.AreSame(savedFlights[1].DateTime, anotherFlight.DateTime);
             Assert.AreSame(savedFlights[1].Company, anotherFlight.Company);
 
+        }
+
+        [TestMethod]
+        public void TestSaveParameter()
+        {
+            InMemoryRepository repository = new InMemoryRepository();
+            Assert.AreEqual(repository.getCount("parameter"), 0);
+
+            ParameterModel parameter = new ParameterModel();
+            parameter.Parameter = "age";
+            parameter.Value = "32";
+            parameter.Probability = (decimal) 0.98;
+            repository.Save(parameter);
+
+            Assert.AreEqual(repository.getCount("parameter"), 1);
         }
     }
 }
