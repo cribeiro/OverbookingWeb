@@ -17,6 +17,7 @@ namespace OverbookingWeb.Models
         [DisplayName("Type")]
         public string Type { get; set; }
 
+        // TODO: add custom validation, depending on Type.
         [Required]
         [DisplayName("Value")]
         public string Value { get; set; }

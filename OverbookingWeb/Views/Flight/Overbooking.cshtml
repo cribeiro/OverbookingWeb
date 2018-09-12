@@ -10,16 +10,15 @@
     <h4>Flight Details</h4>
     <hr />
 
+    <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+        <div class="card-body">
+            <h4 class="card-title">@Html.Encode(ViewData["expectedPassengers"]) / 200</h4>
+            <p class="card-text">number of expected passengers / seats</p>
+        </div>
+    </div>
+    <br />
+    <br />
     <dl class="dl-horizontal">
-        <dt>
-            expected passengers / seats
-        </dt>
-
-        <dd class="bg-danger">
-            @Html.Encode(ViewData["expectedPassengers"]) / 200
-        </dd>
-        <br />
-        <br />
         <dt>
             @Html.DisplayNameFor(model => model.FromTo)
         </dt>
