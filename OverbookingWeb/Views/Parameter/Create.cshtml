@@ -15,15 +15,15 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Parameter, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-control" id="parameter" name="parameter">
-                    <option value="">- Please select a parameter -</option>
-                    <option value="age">Age (e.g. 32)</option>
+                <select class="form-control" id="Type" name="Type">
+                    <option value="">- Please select a type -</option>
+                    <option value=age>Age (e.g. 32)</option>
                     <option value="fromto">Route (e.g. GRU-JFK)</option>
-                    <option value="datetime">Date and time (e.g. 2018-01-05 09:06)</option>
+                    <option value="datetime">Date and time (e.g. 29/05/2018 09:06)</option>
                 </select>
-                @Html.ValidationMessageFor(model => model.Parameter, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -38,7 +38,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Probability, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Probability, new { @value = "", htmlAttributes = new { @class = "form-control", @placeholder = "from 0.00 to 1.00" } })
+                @Html.EditorFor(model => model.Probability, new { @value = "", htmlAttributes = new { @class = "form-control", @placeholder = "from 0 to 100"} })
                 @Html.ValidationMessageFor(model => model.Probability, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -200,8 +200,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Flight\Create.cshtml" />
     <Content Include="Views\Flight\Index.cshtml" />
-    <Content Include="Views\Parameter\Create.cshtml" />
     <Content Include="Views\Passenger\Create.cshtml" />
+    <Content Include="Views\Flight\Overbooking.cshtml" />
+    <Content Include="Views\Parameter\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

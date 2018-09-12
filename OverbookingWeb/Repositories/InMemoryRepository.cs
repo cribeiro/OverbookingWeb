@@ -9,7 +9,7 @@ public class InMemoryRepository
 {
     private List<FlightModel> flights = new List<FlightModel>();
 
-    private List<ParameterModel> parameters = new List<ParameterModel>();
+    public List<ParameterModel> parameters = new List<ParameterModel>();
 
     public InMemoryRepository()
     {
@@ -44,7 +44,6 @@ public class InMemoryRepository
 
             parameters.Add(newParameter);
             HttpContext.Current.Session["parameters"] = parameters;
-
         }
         else if (obj is PassengerModel)
         {
@@ -85,6 +84,11 @@ public class InMemoryRepository
     public int getNumberOfPassengers(int flightId)
     {
         return flights[flightId - 1].passengers.Count;
+    }
+
+    public FlightModel getFlightById(int flightId)
+    {
+        return flights[flightId - 1];
     }
 
 }

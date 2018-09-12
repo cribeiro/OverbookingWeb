@@ -1,0 +1,51 @@
+﻿@model OverbookingApp.Models.FlightModel
+
+@{
+    ViewBag.Title = "Overbooking";
+}
+
+<h2>Overbooking</h2>
+
+<div>
+    <h4>Flight Details</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            expected passengers / seats
+        </dt>
+
+        <dd class="bg-danger">
+            @Html.Encode(ViewData["expectedPassengers"]) / 200
+        </dd>
+        <br />
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.FromTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

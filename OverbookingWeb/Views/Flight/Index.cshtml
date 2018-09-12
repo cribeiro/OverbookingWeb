@@ -20,7 +20,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Company)
         </th>
-        <th># Passengers</th>
+        <th># of Passengers</th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -38,6 +39,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.passengers.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Check overbooking", "Overbooking", "Flight", new { flightId = @item.FlightId }, null)
             </td>
             <td>
                 @Html.ActionLink("Add passenger", "Create", "Passenger", new { flightId = @item.FlightId}, null)
