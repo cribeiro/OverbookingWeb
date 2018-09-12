@@ -1,14 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OverbookingApp.Models;
 using OverbookingWeb.Models;
+using System.IO;
+using System.Web.SessionState;
+using System.Reflection;
 
 namespace OverbookingWeb.Tests.Repositories
 {
     [TestClass]
     public class UnitTestRepositories
     {
+
+        [TestInitialize]
+        public void SetupTests()
+        {
+            // Mocking HttpContext            
+            var httpRequest = new HttpRequest("", "http://localhost/", "");
+
+            var httpResponce = new HttpResponse(new StringWriter());
+
+            var httpContext = new HttpContext(httpRequest, httpResponce);
+            var sessionContainer =
+                new HttpSessionStateContainer("id",
+                                               new SessionStateItemCollection(),
+                                               new HttpStaticObjectsCollection(),
+                                               10,
+                                               true,
+                                               HttpCookieMode.AutoDetect,
+                                               SessionStateMode.InProc,
+                                               false);
+            httpContext.Items["AspSession"] =
+                typeof(HttpSessionState)
+                .GetConstructor(
+                                    BindingFlags.NonPublic | BindingFlags.Instance,
+                                    null,
+                                    CallingConventions.Standard,
+                                    new[] { typeof(HttpSessionStateContainer) },
+                                    null)
+                .Invoke(new object[] { sessionContainer });
+
+            HttpContext.Current = httpContext;
+        }
+
         [TestMethod]
         public void TestSaveFlight()
         {   
@@ -43,13 +79,13 @@ namespace OverbookingWeb.Tests.Repositories
             repository.Save(anotherFlight);
 
             List<FlightModel> savedFlights = repository.GetAllFlights();
-            Assert.AreSame(savedFlights[0].FromTo, flight.FromTo);
-            Assert.AreSame(savedFlights[0].DateTime, flight.DateTime);
-            Assert.AreSame(savedFlights[0].Company, flight.Company);
+            Assert.AreEqual(savedFlights[0].FromTo, flight.FromTo);
+            Assert.AreEqual(savedFlights[0].DateTime, flight.DateTime);
+            Assert.AreEqual(savedFlights[0].Company, flight.Company);
 
-            Assert.AreSame(savedFlights[1].FromTo, anotherFlight.FromTo);
-            Assert.AreSame(savedFlights[1].DateTime, anotherFlight.DateTime);
-            Assert.AreSame(savedFlights[1].Company, anotherFlight.Company);
+            Assert.AreEqual(savedFlights[1].FromTo, anotherFlight.FromTo);
+            Assert.AreEqual(savedFlights[1].DateTime, anotherFlight.DateTime);
+            Assert.AreEqual(savedFlights[1].Company, anotherFlight.Company);
 
         }
 
