@@ -60,9 +60,9 @@ namespace OverbookingWeb.Tests.Repositories
             Assert.AreEqual(repository.getCount("parameter"), 0);
 
             ParameterModel parameter = new ParameterModel();
-            parameter.Parameter = "age";
+            parameter.Type = "age";
             parameter.Value = "32";
-            parameter.Probability = (decimal) 0.98;
+            parameter.Probability = 98;
             repository.Save(parameter);
 
             Assert.AreEqual(repository.getCount("parameter"), 1);
