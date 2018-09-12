@@ -98,6 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\UnitTestFlightController.cs" />
     <Compile Include="Repositories\UnitTestRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
